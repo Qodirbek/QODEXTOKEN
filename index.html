@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'yin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Foydalanuvchi ismi oynasi -->
+    <div id="username-modal" class="modal">
+        <div class="modal-content">
+            <h2>Ismingizni kiriting</h2>
+            <input type="text" id="username-input" placeholder="Ismingiz">
+            <button onclick="saveUsername()">Saqlash</button>
+        </div>
+    </div>
+
+    <!-- Yuqori qism: Tangalar va Energiyalar -->
+    <header>
+        <div class="stats">
+            <div class="stat">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Tanga">
+                <span id="coins">0</span>
+            </div>
+            <div class="stat">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/energe.png" alt="Energiya">
+                <span id="energy">1000</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home bo'limi -->
+    <main id="home" class="page">
+        <img id="egg" class="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
+        <p id="message">Tuxumni bosib tanga ishlang!</p>
+    </main>
+
+    <!-- Earn bo'limi -->
+    <main id="earn" class="page hidden">
+        <p>Referal linkingiz:</p>
+        <p id="ref-link">https://mygame.com?ref=<span id="user-id">12345</span></p>
+    </main>
+
+    <!-- Upgrade bo'limi -->
+    <main id="upgrade" class="page hidden">
+        <p>Kuchaytirish uchun imkoniyatlar:</p>
+        <button onclick="upgradeClick()">Bosishni kuchaytirish (3500 tanga)</button>
+        <button onclick="upgradeEnergy()">Energiya kuchaytirish (3500 tanga)</button>
+    </main>
+
+    <!-- Reyting bo'limi -->
+    <main id="rating" class="page hidden">
+        <h2>Reyting</h2>
+        <ol id="leaderboard"></ol>
+    </main>
+
+    <!-- Navigatsiya -->
+    <footer>
+        <button onclick="showPage('home')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home"> Home
+        </button>
+        <button onclick="showPage('earn')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/earn.png" alt="Earn"> Earn
+        </button>
+        <button onclick="showPage('upgrade')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/upgrade.png" alt="Upgrade"> Upgrade
+        </button>
+        <button onclick="showPage('rating')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Reyting"> Reyting
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
