@@ -1,0 +1,68 @@
+/* Umumiy dizayn */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.stat img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.egg {
+    width: 150px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+footer button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+p {
+    font-size: 18px;
+}

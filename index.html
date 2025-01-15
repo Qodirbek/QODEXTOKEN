@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'yin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Yuqori qism: Tangalar va Energiyalar -->
+    <header>
+        <div class="stats">
+            <div class="stat">
+                <img src="https://github.com/Qodirbek/QODEX-/raw/main/Coin.png" alt="Tanga">
+                <span id="coins">0</span>
+            </div>
+            <div class="stat">
+                <img src="https://github.com/Qodirbek/QODEX-/raw/main/Energy.png" alt="Energiya">
+                <span id="energy">1000</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- O'yin bo'limi -->
+    <main id="home">
+        <img id="egg" class="egg" src="https://github.com/Qodirbek/QODEX-/raw/main/Egg.png" alt="Tuxum" onclick="clickEgg()">
+        <p id="message">Tuxumni bosib tanga ishlang!</p>
+    </main>
+
+    <!-- Navigatsiya -->
+    <footer>
+        <button onclick="showPage('home')">
+            <img src="https://github.com/Qodirbek/QODEX-/raw/main/Home.png" alt="Home"> Home
+        </button>
+        <button onclick="showPage('earn')">
+            <img src="https://github.com/Qodirbek/QODEX-/raw/main/Earn.png" alt="Earn"> Earn
+        </button>
+        <button onclick="showPage('upgrade')">
+            <img src="https://github.com/Qodirbek/QODEX-/raw/main/Upgrade.png" alt="Upgrade"> Upgrade
+        </button>
+        <button onclick="showPage('rating')">
+            <img src="https://github.com/Qodirbek/QODEX-/raw/main/Rating.png" alt="Reyting"> Reyting
+        </button>
+    </footer>
+
+    <!-- Sahifalar -->
+    <div id="earn" class="hidden">
+        <p>Referal linkingiz: <span id="ref-link">https://mygame.com?ref=12345</span></p>
+    </div>
+    <div id="upgrade" class="hidden">
+        <p>Kuchaytirish uchun imkoniyatlar!</p>
+    </div>
+    <div id="rating" class="hidden">
+        <p>Eng yuqori o'rin egalarining ro'yxati:</p>
+        <ol id="leaderboard">
+            <!-- Reyting foydalanuvchilari kiritiladi -->
+        </ol>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
