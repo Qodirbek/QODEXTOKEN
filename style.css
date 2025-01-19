@@ -6,57 +6,76 @@ body {
     text-align: center;
     background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.png') no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
+    color: white;
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.stats {
-    display: flex;
-    gap: 20px;
-}
-
-.stat img {
-    width: 40px;
-    height: 40px;
-}
-
-#user-info {
-    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
 #user-info img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
-.egg {
-    width: 350px;
-    margin: 20px auto;
-    cursor: pointer;
+#user-info span {
+    font-size: 1.2em;
 }
 
+#home {
+    margin-top: 50px;
+}
+
+#egg-container {
+    margin-top: 50px;
+    perspective: 500px;
+}
+
+#egg {
+    width: 300px;
+    cursor: pointer;
+    transform: rotateX(0deg);
+    transition: transform 0.3s ease;
+}
+
+#egg:active {
+    transform: rotateX(10deg) scale(0.95);
+}
+
+/* Tugmalar */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
-footer button img {
-    width: 50px;
-    height: 50px;
+footer button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+footer button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+footer .btn-icon {
+    width: 60px;
+    height: 60px;
+    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/button.png') no-repeat center center;
+    background-size: contain;
 }
