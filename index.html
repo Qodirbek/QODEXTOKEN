@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Yuqori qism: Tangalar, Energiyalar va Profil -->
     <header>
         <div class="stats">
             <div class="stat">
@@ -18,13 +19,37 @@
                 <span id="energy">1000</span>
             </div>
         </div>
+        <button id="profile-button" onclick="showProfileModal()">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/profile.png" alt="Profil">
+        </button>
     </header>
 
-    <main>
+    <!-- Home bo'limi -->
+    <main id="home" class="page">
         <img id="egg" class="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
         <p id="message">Tuxumni bosib tanga ishlang!</p>
     </main>
 
+    <!-- Earn, Upgrade va Reyting sahifalari -->
+    <main id="earn" class="page hidden">
+        <p>Referal linkingiz:</p>
+        <p id="ref-link">https://mygame.com?ref=<span id="user-id">12345</span></p>
+    </main>
+
+    <main id="upgrade" class="page hidden">
+        <p>Kuchaytirish uchun imkoniyatlar:</p>
+        <button onclick="upgradeClick()">Bosishni kuchaytirish (3500 tanga)</button>
+        <button onclick="upgradeEnergy()">Energiya kuchaytirish (3500 tanga)</button>
+    </main>
+
+    <main id="rating" class="page hidden">
+        <h2>Reyting</h2>
+        <ol id="leaderboard">
+            <li id="leaderboard-entry">Foydalanuvchi: <span id="user-rank">1</span>, Ism: <span id="user-name">loading...</span>, Tanga: <span id="user-coins">0</span></li>
+        </ol>
+    </main>
+
+    <!-- Navigatsiya -->
     <footer>
         <button onclick="showPage('home')">
             <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home"> Home
@@ -40,6 +65,6 @@
         </button>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
