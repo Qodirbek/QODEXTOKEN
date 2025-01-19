@@ -1,106 +1,42 @@
+/* Tana va umumiy dizayn */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1e3c72, #2a5298);
-    color: #fff;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
-.page {
-    display: none;
-    text-align: center;
-    padding: 20px;
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.page.active {
-    display: block;
+.stats {
+    display: flex;
+    gap: 20px;
 }
 
-/* Egg */
-#egg-container {
-    margin: 50px auto;
-    text-align: center;
+.stat img {
+    width: 30px;
+    height: 30px;
 }
 
 #egg {
-    width: 120px; /* Tuxum kattaligi */
+    width: 200px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    margin: 50px auto;
+    display: block;
 }
 
-#egg:active {
-    transform: scale(0.95);
-}
-
-/* Energy bar */
-.energy-bar {
-    margin: 20px auto;
-    width: 80%;
-    height: 20px;
-    background: #444;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-.energy-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #4caf50, #8bc34a);
-    transition: width 0.5s ease;
-}
-
-#energy-text {
-    position: absolute;
-    top: -30px;
-    right: 0;
-    font-size: 18px;
-}
-
-/* Coins */
-#coins {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-#coins img {
-    width: 40px;
-    margin-right: 10px;
-}
-
-#coin-count {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Footer */
 footer {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0;
-}
-
-footer button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-footer button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
-
-footer .btn-icon {
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    border-radius: 50%;
-    overflow: hidden;
 }
