@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Chiroyli O'yin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Yuqori qism: Foydalanuvchi ma'lumotlari -->
+    <!-- Foydalanuvchi va statistik ma'lumotlar -->
     <header>
         <div id="user-info">
             <img id="user-avatar" src="" alt="Avatar">
             <span id="user-name">...</span>
         </div>
         <div id="stats">
-            <span id="energy">Energiyangiz: 1000</span>
-            <span id="coins">Tangalar: 0</span>
+            <div class="energy-bar">
+                <div class="energy-fill" id="energy-fill"></div>
+                <span id="energy-text">1000</span>
+            </div>
+            <div id="coins-container">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/coin.png" alt="Coin" id="coin-icon">
+                <span id="coins">0</span>
+            </div>
         </div>
     </header>
 
@@ -32,7 +38,7 @@
         <!-- Earn sahifasi -->
         <section id="earn" class="page">
             <h2>Referal sahifasi</h2>
-            <p>Doʻstlaringiz bilan ulashing:</p>
+            <p>Do‘stlaringiz bilan ulashing:</p>
             <input type="text" id="referral-link" readonly>
         </section>
 
