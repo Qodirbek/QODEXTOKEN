@@ -18,27 +18,33 @@ function clickEgg() {
     if (energy > 0) {
         coins++;
         energy--;
-        document.getElementById("coins").textContent = coins;
-        document.getElementById("energy-fill").style.width = `${energy / 10}%`;
-        document.getElementById("energy-text").textContent = energy;
-        localStorage.setItem("coins", coins);
+        updateStats();
     } else {
         alert("Energiya tugadi!");
     }
 }
 
-// Navigatsiya
+// Sahifalar o'zgartirish
 function navigateTo(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(page).classList.add('active');
-
-    if (page === 'earn') {
-        const referralLink = `https://mygame.com?ref=${document.getElementById("user-name").textContent}`;
-        document.getElementById("referral-link").value = referralLink;
-    }
-
-    if (page === 'rating') {
-        const ratingList = document.getElementById("rating-list");
-        ratingList.innerHTML = `<p>${document.getElementById("user-name").textContent}: ${coins} tanga</p>`;
-    }
 }
+
+// Statistikani yangilash
+function updateStats() {
+    document.getElementById("coins").textContent = coins;
+    document.getElementById("energy-fill").style.width = `${energy / 10}%`;
+    document.getElementById("energy-text").textContent = energy;
+    localStorage.setItem("coins", coins);
+}
+
+// Har sekundda energiya oshirish
+setInterval(() => {
+    if (energy < 1000) {
+        energy++;
+        updateStats();
+    }
+}, 1000);
+
+// Dastlabki statistikalarni yuklash
+updateStats();
