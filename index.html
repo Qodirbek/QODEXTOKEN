@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Game</title>
+    <title>O'yin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,18 +19,27 @@
             </div>
         </div>
     </header>
-    <main id="game">
-        <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
+
+    <main>
+        <img id="egg" class="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
         <p id="message">Tuxumni bosib tanga ishlang!</p>
     </main>
+
     <footer>
         <button onclick="showPage('home')">
             <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home"> Home
         </button>
+        <button onclick="showPage('earn')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/earn.png" alt="Earn"> Earn
+        </button>
+        <button onclick="showPage('upgrade')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/upgrade.png" alt="Upgrade"> Upgrade
+        </button>
         <button onclick="showPage('rating')">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Rating"> Rating
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Reyting"> Reyting
         </button>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
