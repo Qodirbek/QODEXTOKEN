@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Interface</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Home sahifasi -->
-    <main id="home" class="page active">
-        <div id="egg-container">
-            <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Egg" onclick="clickEgg()">
+    <header>
+        <div class="stats">
+            <div class="stat">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Tanga">
+                <span id="coins">0</span>
+            </div>
+            <div class="stat">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/energe.png" alt="Energiya">
+                <span id="energy">1000</span>
+            </div>
         </div>
-        <div class="energy-bar">
-            <div class="energy-fill" id="energy-fill"></div>
-            <span id="energy-text">1000</span>
-        </div>
-        <div id="coins">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Coin">
-            <span id="coin-count">0</span>
-        </div>
+    </header>
+    <main id="game">
+        <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
+        <p id="message">Tuxumni bosib tanga ishlang!</p>
     </main>
-
-    <!-- Navigatsiya -->
     <footer>
-        <button onclick="navigateTo('home')">
-            <div class="btn-icon" style="background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png');"></div>
+        <button onclick="showPage('home')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home"> Home
+        </button>
+        <button onclick="showPage('rating')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Rating"> Rating
         </button>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
