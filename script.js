@@ -1,35 +1,25 @@
-let energy = 1000;
 let coins = 0;
+let energy = 1000;
 
-// Navigatsiya funksiyasi
-function navigateTo(pageId) {
-    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
-}
-
-// Tuxumni bosganda tanga qo'shish va energiyani kamaytirish
+// Tuxum bosilganda tanga yig'ish
 function clickEgg() {
     if (energy > 0) {
-        coins += 1;
-        energy -= 1;
-
-        document.getElementById('coin-count').innerText = coins;
-        document.getElementById('energy-text').innerText = energy;
-
-        const energyFill = document.getElementById('energy-fill');
-        energyFill.style.width = `${(energy / 1000) * 100}%`;
+        coins++;
+        energy--;
+        updateStats();
     } else {
-        alert("Energiya tugadi! Kuting yoki uni to'ldiring.");
+        alert("Energiya tugadi!");
     }
 }
 
-// Energiya har soniyada oshishi
-setInterval(() => {
-    if (energy < 1000) {
-        energy++;
-        document.getElementById('energy-text').innerText = energy;
+// Statistika yangilash
+function updateStats() {
+    document.getElementById("coins").textContent = coins;
+    document.getElementById("energy").textContent = energy;
+}
 
-        const energyFill = document.getElementById('energy-fill');
-        energyFill.style.width = `${(energy / 1000) * 100}%`;
-    }
+// Har sekundda energiya oshirish
+setInterval(() => {
+    if (energy < 1000) energy++;
+    updateStats();
 }, 1000);
