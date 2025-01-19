@@ -11,9 +11,14 @@ body {
 
 header {
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#user-info {
+    display: flex;
     align-items: center;
     gap: 10px;
 }
@@ -24,14 +29,21 @@ header {
     border-radius: 50%;
 }
 
-#user-info span {
+#stats span {
+    margin-right: 20px;
     font-size: 1.2em;
 }
 
-#home {
-    margin-top: 50px;
+.page {
+    display: none;
+    padding: 20px;
 }
 
+.page.active {
+    display: block;
+}
+
+/* Tuxum */
 #egg-container {
     margin-top: 50px;
     perspective: 500px;
@@ -62,10 +74,8 @@ footer {
 footer button {
     background: none;
     border: none;
-    outline: none;
     cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 footer button:hover {
@@ -76,6 +86,5 @@ footer button:hover {
 footer .btn-icon {
     width: 60px;
     height: 60px;
-    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/button.png') no-repeat center center;
-    background-size: contain;
+    background-size: cover;
 }
