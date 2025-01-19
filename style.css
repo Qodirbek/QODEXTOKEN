@@ -1,17 +1,19 @@
-/* Tana va umumiy dizayn */
+/* Umumiy dizayn */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.png') no-repeat center center fixed;
-    background-size: cover;
+    text-align: center;
+    background-color: #f9f9f9;
 }
 
 header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
 }
 
 .stats {
@@ -22,21 +24,39 @@ header {
 .stat img {
     width: 30px;
     height: 30px;
+    margin-right: 5px;
+    vertical-align: middle;
 }
 
 #egg {
-    width: 200px;
+    width: 300px;
+    margin: 20px auto;
     cursor: pointer;
-    margin: 50px auto;
-    display: block;
 }
 
 footer {
-    display: flex;
-    justify-content: space-around;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+footer button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
