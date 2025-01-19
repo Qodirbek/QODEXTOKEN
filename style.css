@@ -29,38 +29,64 @@ header {
     border-radius: 50%;
 }
 
-#stats span {
-    margin-right: 20px;
-    font-size: 1.2em;
+/* Statistik ma'lumotlar */
+#stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.page {
-    display: none;
-    padding: 20px;
+.energy-bar {
+    width: 150px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
 }
 
-.page.active {
-    display: block;
+.energy-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00f, #0ff);
+    transition: width 0.5s;
+}
+
+#energy-text {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    font-size: 0.8em;
+    color: white;
+}
+
+#coins-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#coin-icon {
+    width: 30px;
+    height: 30px;
 }
 
 /* Tuxum */
 #egg-container {
     margin-top: 50px;
-    perspective: 500px;
 }
 
 #egg {
     width: 300px;
     cursor: pointer;
-    transform: rotateX(0deg);
     transition: transform 0.3s ease;
 }
 
 #egg:active {
-    transform: rotateX(10deg) scale(0.95);
+    transform: scale(0.95);
 }
 
-/* Tugmalar */
+/* Navigatsiya */
 footer {
     position: fixed;
     bottom: 0;
@@ -75,7 +101,7 @@ footer button {
     background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 footer button:hover {
