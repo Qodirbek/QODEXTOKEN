@@ -3,56 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O'yin</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Game Interface</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Foydalanuvchi va statistik ma'lumotlar -->
-    <header>
-        <div id="user-info">
-            <img id="user-avatar" src="" alt="Avatar">
-            <span id="user-name">...</span>
+    <!-- Home sahifasi -->
+    <main id="home" class="page active">
+        <div id="egg-container">
+            <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Egg" onclick="clickEgg()">
         </div>
-        <div id="stats">
-            <div class="energy-bar">
-                <div class="energy-fill" id="energy-fill"></div>
-                <span id="energy-text">1000</span>
-            </div>
-            <div id="coins-container">
-                <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/Coin.png?raw=true" alt="Coin" id="coin-icon">
-                <span id="coins">0</span>
-            </div>
+        <div class="energy-bar">
+            <div class="energy-fill" id="energy-fill"></div>
+            <span id="energy-text">1000</span>
         </div>
-    </header>
+        <div id="coins">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Coin">
+            <span id="coin-count">0</span>
+        </div>
+    </main>
 
-    <!-- Sahifalar -->
-    <main>
-        <!-- Home sahifasi -->
-        <section id="home" class="page active">
-            <div id="egg-container">
-                <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
-            </div>
-            <p id="message">Tuxumni bosib tanga ishlang!</p>
-        </section>
+    <!-- Earn sahifasi -->
+    <main id="earn" class="page">
+        <h1>Earn Coins</h1>
+        <p>Refer your friends and earn more coins!</p>
+    </main>
 
-        <!-- Earn sahifasi -->
-        <section id="earn" class="page">
-            <h2>Referal sahifasi</h2>
-            <p>Do‘stlaringiz bilan ulashing:</p>
-            <input type="text" id="referral-link" readonly>
-        </section>
+    <!-- Upgrade sahifasi -->
+    <main id="upgrade" class="page">
+        <h1>Upgrade</h1>
+        <p>Boost your energy and coin production.</p>
+    </main>
 
-        <!-- Upgrade sahifasi -->
-        <section id="upgrade" class="page">
-            <h2>Kuchaytirish sahifasi</h2>
-            <p>Tangalarni ishlatib kuchaytirishlarni sotib oling!</p>
-        </section>
-
-        <!-- Reyting sahifasi -->
-        <section id="rating" class="page">
-            <h2>Reyting</h2>
-            <div id="rating-list"></div>
-        </section>
+    <!-- Rating sahifasi -->
+    <main id="rating" class="page">
+        <h1>Leaderboard</h1>
+        <p>Top players will appear here.</p>
     </main>
 
     <!-- Navigatsiya -->
