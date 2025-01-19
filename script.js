@@ -1,7 +1,13 @@
 let coins = 0;
 let energy = 1000;
 
-// Tuxum bosilganda tanga yig'ish
+// Statistika yangilash
+function updateStats() {
+    document.getElementById("coins").textContent = coins;
+    document.getElementById("energy").textContent = energy;
+}
+
+// Tuxum bosilganda
 function clickEgg() {
     if (energy > 0) {
         coins++;
@@ -12,14 +18,7 @@ function clickEgg() {
     }
 }
 
-// Statistika yangilash
-function updateStats() {
-    document.getElementById("coins").textContent = coins;
-    document.getElementById("energy").textContent = energy;
+// Sahifalarni ko'rsatish
+function showPage(page) {
+    console.log(`Sahifa: ${page}`);
 }
-
-// Har sekundda energiya oshirish
-setInterval(() => {
-    if (energy < 1000) energy++;
-    updateStats();
-}, 1000);
