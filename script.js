@@ -1,4 +1,5 @@
 let coins = parseInt(localStorage.getItem("coins")) || 0;
+let energy = 1000;
 
 // Telegram Web App bilan integratsiya
 if (window.Telegram.WebApp) {
@@ -14,18 +15,29 @@ if (window.Telegram.WebApp) {
 
 // Tuxum bosilganda
 function clickEgg() {
-    coins++;
-    document.getElementById("message").textContent = `Tuxumni bosganingiz uchun sizda ${coins} tanga bor!`;
-    localStorage.setItem("coins", coins);
+    if (energy > 0) {
+        coins++;
+        energy--;
+        document.getElementById("coins").textContent = `Tangalar: ${coins}`;
+        document.getElementById("energy").textContent = `Energiyangiz: ${energy}`;
+        localStorage.setItem("coins", coins);
+    } else {
+        alert("Energiya tugadi!");
+    }
 }
 
-// Sahifani ochish
+// Navigatsiya
 function navigateTo(page) {
-    if (page === "earn") {
-        alert("Referal: https://mygame.com?ref=" + user.first_name);
-    } else if (page === "upgrade") {
-        alert("Kuchaytirish imkoniyatlari mavjud!");
-    } else if (page === "rating") {
-        alert("Sizning reytingingiz: " + coins);
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+
+    if (page === 'earn') {
+        const referralLink = `https://mygame.com?ref=${document.getElementById("user-name").textContent}`;
+        document.getElementById("referral-link").value = referralLink;
+    }
+
+    if (page === 'rating') {
+        const ratingList = document.getElementById("rating-list");
+        ratingList.innerHTML = `<p>${document.getElementById("user-name").textContent}: ${coins} tanga</p>`;
     }
 }
