@@ -3,39 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O'yin</title>
+    <title>Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Yuqori qism: Telegram foydalanuvchi ma'lumotlari -->
+    <!-- Yuqori qism: Foydalanuvchi ma'lumotlari -->
     <header>
         <div id="user-info">
             <img id="user-avatar" src="" alt="Avatar">
             <span id="user-name">...</span>
         </div>
+        <div id="stats">
+            <span id="energy">Energiyangiz: 1000</span>
+            <span id="coins">Tangalar: 0</span>
+        </div>
     </header>
 
-    <!-- Asosiy sahifa: Home -->
-    <main id="home">
-        <div id="egg-container">
-            <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
-        </div>
-        <p id="message">Tuxumni bosib tanga ishlang!</p>
+    <!-- Sahifa tarkibi -->
+    <main>
+        <!-- Home sahifasi -->
+        <section id="home" class="page active">
+            <div id="egg-container">
+                <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
+            </div>
+            <p id="message">Tuxumni bosib tanga ishlang!</p>
+        </section>
+
+        <!-- Earn sahifasi -->
+        <section id="earn" class="page">
+            <h2>Referal sahifasi</h2>
+            <p>Doʻstlaringiz bilan ulashing:</p>
+            <input type="text" id="referral-link" readonly>
+        </section>
+
+        <!-- Upgrade sahifasi -->
+        <section id="upgrade" class="page">
+            <h2>Kuchaytirish sahifasi</h2>
+            <p>Tangalarni ishlatib kuchaytirishlarni sotib oling!</p>
+        </section>
+
+        <!-- Reyting sahifasi -->
+        <section id="rating" class="page">
+            <h2>Reyting</h2>
+            <div id="rating-list"></div>
+        </section>
     </main>
 
     <!-- Navigatsiya -->
     <footer>
         <button onclick="navigateTo('home')">
-            <div class="btn-icon"></div>
+            <div class="btn-icon" style="background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png');"></div>
         </button>
         <button onclick="navigateTo('earn')">
-            <div class="btn-icon"></div>
+            <div class="btn-icon" style="background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/earn.png');"></div>
         </button>
         <button onclick="navigateTo('upgrade')">
-            <div class="btn-icon"></div>
+            <div class="btn-icon" style="background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/upgrade.png');"></div>
         </button>
         <button onclick="navigateTo('rating')">
-            <div class="btn-icon"></div>
+            <div class="btn-icon" style="background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png');"></div>
         </button>
     </footer>
 
