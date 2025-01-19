@@ -18,8 +18,9 @@ function clickEgg() {
     if (energy > 0) {
         coins++;
         energy--;
-        document.getElementById("coins").textContent = `Tangalar: ${coins}`;
-        document.getElementById("energy").textContent = `Energiyangiz: ${energy}`;
+        document.getElementById("coins").textContent = coins;
+        document.getElementById("energy-fill").style.width = `${energy / 10}%`;
+        document.getElementById("energy-text").textContent = energy;
         localStorage.setItem("coins", coins);
     } else {
         alert("Energiya tugadi!");
