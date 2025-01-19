@@ -23,7 +23,7 @@ body {
 }
 
 #egg {
-    width: 150px;
+    width: 120px; /* Tuxum kattaligi */
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -98,8 +98,8 @@ footer button:hover {
 }
 
 footer .btn-icon {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-size: cover;
     border-radius: 50%;
     overflow: hidden;
