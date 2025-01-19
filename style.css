@@ -114,3 +114,12 @@ footer .btn-icon {
     height: 60px;
     background-size: cover;
 }
+
+/* Sahifa navigatsiyasi */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
