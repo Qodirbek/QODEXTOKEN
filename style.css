@@ -43,6 +43,7 @@ header {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    margin-top: 10px; /* Energiyani tuxumdan pastga tushiradi */
 }
 
 .energy-fill {
@@ -64,6 +65,7 @@ header {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-top: 20px;
 }
 
 #coin-icon {
