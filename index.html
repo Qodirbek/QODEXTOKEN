@@ -20,7 +20,7 @@
             </div>
         </div>
         <button id="profile-button" onclick="showProfileModal()">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/profile.png" alt="Profil">
+            <img id="profile-img" src="" alt="Profil">
         </button>
     </header>
 
@@ -45,7 +45,12 @@
     <main id="rating" class="page hidden">
         <h2>Reyting</h2>
         <ol id="leaderboard">
-            <li id="leaderboard-entry">Foydalanuvchi: <span id="user-rank">1</span>, Ism: <span id="user-name">loading...</span>, Tanga: <span id="user-coins">0</span></li>
+            <li id="leaderboard-entry">
+                Foydalanuvchi: <span id="user-rank">1</span>, 
+                Ism: <span id="user-name">loading...</span>, 
+                Tanga: <span id="user-coins">0</span>
+                <img id="user-profile-img" src="" alt="User Image">
+            </li>
         </ol>
     </main>
 
@@ -65,6 +70,6 @@
         </button>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
