@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Yuqori qism: Telegram foydalanuvchi ma'lumotlari -->
+    <!-- Yuqori qism -->
     <header>
-        <div id="user-info" onclick="openProfile()">
+        <div id="user-info" onclick="clearRating()">
             <img id="user-avatar" src="https://via.placeholder.com/50" alt="Avatar">
-            <span id="user-name">...</span>
+            <span id="user-name">Loading...</span>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Tanga">
+                <span id="coins">0</span>
+            </div>
         </div>
     </header>
 
-    <!-- Asosiy sahifa: Home -->
+    <!-- Asosiy qism -->
     <main id="home">
         <div id="egg-container">
             <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
@@ -25,17 +31,17 @@
 
     <!-- Navigatsiya -->
     <footer>
-        <button onclick="navigateTo('home')">
-            <div class="btn-icon"></div>
+        <button class="nav-btn" onclick="navigateTo('home')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home">
         </button>
-        <button onclick="navigateTo('earn')">
-            <div class="btn-icon"></div>
+        <button class="nav-btn" onclick="navigateTo('earn')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/earn.png" alt="Earn">
         </button>
-        <button onclick="navigateTo('upgrade')">
-            <div class="btn-icon"></div>
+        <button class="nav-btn" onclick="navigateTo('upgrade')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/upgrade.png" alt="Upgrade">
         </button>
-        <button onclick="navigateTo('rating')">
-            <div class="btn-icon"></div>
+        <button class="nav-btn" onclick="navigateTo('rating')">
+            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Reyting">
         </button>
     </footer>
 
