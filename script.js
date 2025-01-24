@@ -1,37 +1,37 @@
 let coins = parseInt(localStorage.getItem("coins")) || 0;
+let energy = parseInt(localStorage.getItem("energy")) || 100;
 
-// Telegram integratsiyasi
-if (window.Telegram.WebApp) {
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-    const user = tg.initDataUnsafe?.user;
-
-    if (user) {
-        document.getElementById("user-name").textContent = user.first_name;
-        document.getElementById("user-avatar").src = user.photo_url || "https://via.placeholder.com/50";
-    }
+// Energiya barini yangilash funksiyasi
+function updateEnergyBar() {
+    const energyFill = document.getElementById("energy-fill");
+    energyFill.style.width = `${energy}%`;
 }
 
 // Tuxum bosilganda
 function clickEgg() {
-    coins++;
-    document.getElementById("coins").textContent = coins;
-    localStorage.setItem("coins", coins);
-
-    // Tanga atrofiga nur effekti qo‘shish
-    const egg = document.getElementById("egg");
-    egg.style.boxShadow = "0 0 20px yellow";
-    setTimeout(() => {
-        egg.style.boxShadow = "none";
-    }, 300);
+    if (energy > 0) {
+        coins++;
+        energy -= 10; // Har bosishda energiya kamayadi
+        document.getElementById("coins").textContent = coins;
+        localStorage.setItem("coins", coins);
+        updateEnergyBar();
+    } else {
+        alert("Energiya tugadi!");
+    }
 }
 
-// Reyting sahifasini o‘chirish
-function clearRating() {
-    alert("Reyting sahifasi o‘chirildi!");
-}
+// Har sekundda energiya oshirish
+setInterval(() => {
+    if (energy < 100) {
+        energy++;
+        updateEnergyBar();
+    }
+}, 1000);
 
-// Sahifani ochish
+// Tugmani bosganda boshqa sahifaga o'tish
 function navigateTo(page) {
-    alert(`${page} sahifasiga o'tildi!`);
+    alert(`${page} sahifasi ochilmoqda!`);
 }
+
+// Dastlab energiya barini yangilash
+updateEnergyBar();
