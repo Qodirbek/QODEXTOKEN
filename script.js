@@ -1,6 +1,6 @@
 let coins = parseInt(localStorage.getItem("coins")) || 0;
 
-// Telegram Web App bilan integratsiya
+// Telegram integratsiyasi
 if (window.Telegram.WebApp) {
     const tg = window.Telegram.WebApp;
     tg.expand();
@@ -15,29 +15,23 @@ if (window.Telegram.WebApp) {
 // Tuxum bosilganda
 function clickEgg() {
     coins++;
-    document.getElementById("message").textContent = `Tuxumni bosganingiz uchun sizda ${coins} tanga bor!`;
+    document.getElementById("coins").textContent = coins;
     localStorage.setItem("coins", coins);
 
+    // Tanga atrofiga nur effekti qo‘shish
     const egg = document.getElementById("egg");
-    egg.style.boxShadow = "0 0 20px 10px rgba(255, 255, 0, 0.8)";
-
+    egg.style.boxShadow = "0 0 20px yellow";
     setTimeout(() => {
         egg.style.boxShadow = "none";
     }, 300);
 }
 
-// Tugmalarni bosish
-function navigateTo(page) {
-    if (page === "earn") {
-        alert("Referal: https://mygame.com?ref=" + coins);
-    } else if (page === "upgrade") {
-        alert("Kuchaytirish imkoniyatlari mavjud!");
-    } else if (page === "rating") {
-        alert("Sizning reytingingiz: " + coins);
-    }
+// Reyting sahifasini o‘chirish
+function clearRating() {
+    alert("Reyting sahifasi o‘chirildi!");
 }
 
-// Foydalanuvchi profiliga bosilganda
-function openProfile() {
-    alert("Foydalanuvchi profiliga tashrif buyurish.");
+// Sahifani ochish
+function navigateTo(page) {
+    alert(`${page} sahifasiga o'tildi!`);
 }
