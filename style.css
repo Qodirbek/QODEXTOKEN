@@ -1,3 +1,4 @@
+/* Umumiy dizayn */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -15,19 +16,6 @@ header {
     align-items: center;
 }
 
-#user-info {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-#user-info img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
 .stats {
     display: flex;
     align-items: center;
@@ -39,12 +27,28 @@ header {
     margin-right: 5px;
 }
 
+.energy-bar {
+    width: 150px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#energy-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 100%; /* Energiyaning boshlang'ich qiymati */
+    transition: width 0.3s ease-in-out;
+}
+
 #egg-container {
     margin-top: 30px;
 }
 
 #egg {
-    width: 300px;
+    width: 200px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -64,19 +68,18 @@ footer {
     padding: 10px 0;
 }
 
-.nav-btn {
+footer button {
     background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.nav-btn img {
-    width: 40px;
-    height: 40px;
-}
-
-.nav-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px white;
+footer button img {
+    width: 30px;
+    height: 30px;
 }
