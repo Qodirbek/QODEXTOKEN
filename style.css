@@ -1,21 +1,23 @@
-/* Umumiy dizayn */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.png') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
+    background-color: #f0f0f0;
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #4CAF50;
+    color: white;
     padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -23,67 +25,58 @@ header {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-right: 10px;
 }
 
-#user-info span {
-    font-size: 1.2em;
+.stats {
+    display: flex;
+    align-items: center;
 }
 
-#home {
-    margin-top: 20px; /* Tanga biroz pastroq joylashadi */
+.stat img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
 }
 
 #egg-container {
     margin-top: 30px;
-    perspective: 500px;
-    position: relative;
 }
 
 #egg {
-    width: 200px;
+    width: 300px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 #egg:active {
-    transform: rotateX(10deg) scale(0.95);
-    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.8); /* Yorituvchi effekt */
+    transform: scale(0.9);
+    box-shadow: 0 0 20px yellow;
 }
 
-/* Tugmalar */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: #333;
     display: flex;
     justify-content: space-around;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
-footer button {
+.nav-btn {
     background: none;
     border: none;
-    outline: none;
     cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-footer button:hover {
+.nav-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Yorituvchi effekt */
-}
-
-footer .btn-icon {
-    width: 60px;
-    height: 60px;
-    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/button.png') no-repeat center center;
-    background-size: contain;
-}
-
-#message {
-    margin-top: 20px;
-    font-size: 1.2em;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px white;
 }
