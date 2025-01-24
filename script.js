@@ -1,90 +1,43 @@
-let username = localStorage.getItem("username");
 let coins = parseInt(localStorage.getItem("coins")) || 0;
-let energy = parseInt(localStorage.getItem("energy")) || 1000;
-let rank = 1; // Reytingni boshlang'ich o'rni
 
-// Telegram Web App API bilan integratsiya
+// Telegram Web App bilan integratsiya
 if (window.Telegram.WebApp) {
     const tg = window.Telegram.WebApp;
-
-    // Fullscreen rejimini faollashtirish
     tg.expand();
-
-    // Foydalanuvchi ma'lumotlarini olish
     const user = tg.initDataUnsafe?.user;
 
-    // Telegramdan foydalanuvchi ma'lumotlarini olish
     if (user) {
-        username = user.first_name;
-        localStorage.setItem("username", username);
-        document.getElementById("profile-img").src = user.photo_url;  // Foydalanuvchi rasmni qo'shish
-        document.getElementById("user-profile-img").src = user.photo_url;  // Reytingda ham rasmni ko'rsatish
-        alert(`Xush kelibsiz, ${username}!`);
-    } else {
-        if (!username) {
-            username = generateRandomUsername();
-            localStorage.setItem("username", username);
-            alert("Sizga random ism berildi: " + username);
-        }
+        document.getElementById("user-name").textContent = user.first_name;
+        document.getElementById("user-avatar").src = user.photo_url || "https://via.placeholder.com/50";
     }
-}
-
-// Foydalanuvchiga random ism berish
-function generateRandomUsername() {
-    const randomNames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Charles", "Thomas"];
-    const randomNumber = Math.floor(Math.random() * 1000) + 1; // 1 dan 1000 gacha raqam
-    const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
-    return randomName + randomNumber; // Ismga raqamni qo'shamiz
-}
-
-// Statistika yangilash
-function updateStats() {
-    document.getElementById("coins").textContent = coins;
-    document.getElementById("energy").textContent = energy;
-    localStorage.setItem("coins", coins);
-    localStorage.setItem("energy", energy);
 }
 
 // Tuxum bosilganda
 function clickEgg() {
-    if (energy > 0) {
-        coins++;
-        energy--;
-        updateStats();
-    } else {
-        alert("Energiya tugadi!");
+    coins++;
+    document.getElementById("message").textContent = `Tuxumni bosganingiz uchun sizda ${coins} tanga bor!`;
+    localStorage.setItem("coins", coins);
+
+    const egg = document.getElementById("egg");
+    egg.style.boxShadow = "0 0 20px 10px rgba(255, 255, 0, 0.8)";
+
+    setTimeout(() => {
+        egg.style.boxShadow = "none";
+    }, 300);
+}
+
+// Tugmalarni bosish
+function navigateTo(page) {
+    if (page === "earn") {
+        alert("Referal: https://mygame.com?ref=" + coins);
+    } else if (page === "upgrade") {
+        alert("Kuchaytirish imkoniyatlari mavjud!");
+    } else if (page === "rating") {
+        alert("Sizning reytingingiz: " + coins);
     }
 }
 
-// Sahifalarni ko'rsatish
-function showPage(page) {
-    document.querySelectorAll(".page").forEach(el => el.classList.add("hidden"));
-    document.getElementById(page).classList.remove("hidden");
+// Foydalanuvchi profiliga bosilganda
+function openProfile() {
+    alert("Foydalanuvchi profiliga tashrif buyurish.");
 }
-
-// Foydalanuvchining reytingini yangilash
-function updateLeaderboard() {
-    document.getElementById("user-name").textContent = username;
-    document.getElementById("user-coins").textContent = coins;
-    document.getElementById("user-rank").textContent = rank;
-}
-
-// Dastlabki holatni tekshirish
-if (!username) {
-    username = generateRandomUsername();
-    localStorage.setItem("username", username);
-    alert("Sizga random ism berildi: " + username);
-} else {
-    alert("Xush kelibsiz, " + username);
-}
-
-updateStats();
-
-// Har 1 sekundda energiyani oshirish va tanga yangilash
-setInterval(() => {
-    energy++; // Energiyani 1 tadan oshirish
-    updateStats();
-}, 1000);
-
-// Foydalanuvchi reytingini yangilash
-updateLeaderboard();
