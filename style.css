@@ -4,113 +4,86 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-image: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.jpg');
+    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/background.png') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
+    color: white;
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-.stats {
-    display: flex;
-    gap: 20px;
-}
-
-.stat img {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    vertical-align: middle;
-}
-
-#profile-button img {
-    width: 40px;
-    height: 40px;
+    gap: 10px;
     cursor: pointer;
 }
 
-.egg {
-    width: 300px;
-    margin: 20px auto;
-    cursor: pointer;
+#user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
+#user-info span {
+    font-size: 1.2em;
+}
+
+#home {
+    margin-top: 20px; /* Tanga biroz pastroq joylashadi */
+}
+
+#egg-container {
+    margin-top: 30px;
+    perspective: 500px;
+    position: relative;
+}
+
+#egg {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#egg:active {
+    transform: rotateX(10deg) scale(0.95);
+    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.8); /* Yorituvchi effekt */
+}
+
+/* Tugmalar */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
-    color: white;
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 footer button {
     background: none;
     border: none;
-    color: white;
-    font-size: 16px;
+    outline: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-footer button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+footer button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Yorituvchi effekt */
 }
 
-.hidden {
-    display: none;
+footer .btn-icon {
+    width: 60px;
+    height: 60px;
+    background: url('https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/button.png') no-repeat center center;
+    background-size: contain;
 }
 
-#leaderboard li {
-    margin-bottom: 20px;
-}
-
-#leaderboard img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.modal input {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
+#message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
