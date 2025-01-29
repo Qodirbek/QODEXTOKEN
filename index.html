@@ -1,55 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O'yin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Yuqori qism -->
-    <header>
-        <div id="user-info">
-            <img id="user-avatar" src="https://via.placeholder.com/50" alt="Avatar">
-            <span id="user-name">Username</span>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/home.png?raw=true" alt="Home" class="clickable-image" id="homeImage">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/earn.png?raw=true" alt="Earn" class="clickable-image" id="earnImage">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/upgrade.png?raw=true" alt="Upgrade" class="clickable-image" id="upgradeImage">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/rating.png?raw=true" alt="Rating" class="clickable-image" id="ratingImage">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/coin.png?raw=true" alt="Coin" class="clickable-image" id="coinImage">
+            <img src="https://github.com/Qodirbek/QODEXTOKEN/blob/main/egg.png?raw=true" alt="Egg" class="clickable-image" id="eggImage">
         </div>
-        <div class="stats">
-            <div class="stat">
-                <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/Coin.png" alt="Tanga">
-                <span id="coins">0</span>
-            </div>
-            <div class="stat">
-                <div class="energy-bar">
-                    <div id="energy-fill"></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Asosiy qism -->
-    <main id="home" class="page">
-        <div id="egg-container">
-            <img id="egg" src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/egg.png" alt="Tuxum" onclick="clickEgg()">
-        </div>
-        <p id="message">Tuxumni bosib tanga ishlang!</p>
-    </main>
-
-    <!-- Navigatsiya -->
-    <footer>
-        <button onclick="navigateTo('home')">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/home.png" alt="Home"> Home
-        </button>
-        <button onclick="navigateTo('earn')">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/earn.png" alt="Earn"> Earn
-        </button>
-        <button onclick="navigateTo('upgrade')">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/upgrade.png" alt="Upgrade"> Upgrade
-        </button>
-        <button onclick="navigateTo('rating')">
-            <img src="https://raw.githubusercontent.com/Qodirbek/QODEXTOKEN/main/rating.png" alt="Reyting"> Reyting
-        </button>
-    </footer>
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
