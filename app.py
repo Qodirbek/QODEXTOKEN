@@ -17,22 +17,23 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Telegram orqali kirgan foydalanuvchilarni ro‘yxatdan o‘tkazish"""
-    if request.method == 'GET':
-        return render_template("login.html")  # Login sahifasi
+    if request.method == 'POST':
+        # Login uchun foydalanuvchi ma'lumotlarini olish
+        username = request.form.get('username')
+        profile_pic = request.form.get('profile_pic')
+
+        if not username or not profile_pic:
+            return jsonify({"error": "Invalid data"}), 400  # Xato bo‘lsa, qaytarish
+
+        session['user_data'] = {
+            'username': username,
+            'profile_pic': profile_pic,
+            'coins': 0  # Boshlang‘ich tangalar soni
+        }
+        return redirect(url_for('home'))  # Login muvaffaqiyatli bo'lsa home sahifasiga yo‘naltirish
     
-    data = request.json  # Telegramdan kelgan JSON ma'lumot
-    username = data.get('username')
-    profile_pic = data.get('profile_pic')
-
-    if not username or not profile_pic:
-        return jsonify({"error": "Invalid data"}), 400  # Xato bo‘lsa, qaytarish
-
-    session['user_data'] = {
-        'username': username,
-        'profile_pic': profile_pic,
-        'coins': 0  # Boshlang‘ich tangalar soni
-    }
-    return jsonify({"message": "Login successful"}), 200
+    # GET request bo'lsa login sahifasini qaytarish
+    return render_template("login.html")
 
 @app.route('/click_coin', methods=['POST'])
 def click_coin():
