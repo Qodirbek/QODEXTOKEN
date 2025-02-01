@@ -1,5 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session
-import random
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Session uchun maxfiy kalit
@@ -8,48 +7,75 @@ app.secret_key = 'your_secret_key'  # Session uchun maxfiy kalit
 def home():
     user_data = session.get('user_data', None)
     if user_data:
-        coins = user_data["coins"]
-        username = user_data["username"]
-        profile_pic = user_data["profile_pic"]
-        return render_template("index.html", coins=coins, username=username, profile_pic=profile_pic, page="home")
+        return render_template("index.html", 
+                               coins=user_data["coins"], 
+                               username=user_data["username"], 
+                               profile_pic=user_data["profile_pic"], 
+                               page="home")
     return redirect(url_for('login'))
 
-@app.route('/login/<username>/<profile_pic>', methods=['GET'])
-def login(username, profile_pic):
+@app.route('/login', methods=['POST'])
+def login():
+    """Telegram orqali kirgan foydalanuvchilarni ro‘yxatdan o‘tkazish"""
+    data = request.json  # Telegramdan kelgan JSON ma'lumot
+    username = data.get('username')
+    profile_pic = data.get('profile_pic')
+
+    if not username or not profile_pic:
+        return jsonify({"error": "Invalid data"}), 400  # Xato bo‘lsa, qaytarish
+
     session['user_data'] = {
         'username': username,
         'profile_pic': profile_pic,
         'coins': 0  # Boshlang‘ich tangalar soni
     }
-    return redirect(url_for('home'))
+    return jsonify({"message": "Login successful"}), 200
 
 @app.route('/click_coin', methods=['POST'])
 def click_coin():
+    """Foydalanuvchi tangaga bosganida tanga sonini oshirish"""
     user_data = session.get('user_data', None)
     if user_data:
         user_data["coins"] += 1
-    return redirect(url_for('home'))
+        session.modified = True  # Sessiyani yangilash
+        return jsonify({"coins": user_data["coins"]})  # AJAX uchun JSON qaytarish
+    return jsonify({"error": "User not logged in"}), 403
 
 @app.route('/earn')
 def earn():
+    """Earn sahifasi"""
     user_data = session.get('user_data', None)
     if user_data:
-        return render_template("index.html", coins=user_data["coins"], username=user_data["username"], profile_pic=user_data["profile_pic"], page="earn")
-    return redirect(url_for('login'))
+        return render_template("index.html", 
+                               coins=user_data["coins"], 
+                               username=user_data["username"], 
+                               profile_pic=user_data["profile_pic"], 
+                               page="earn")
+    return redirect(url_for('home'))
 
 @app.route('/upgrade')
 def upgrade():
+    """Upgrade sahifasi"""
     user_data = session.get('user_data', None)
     if user_data:
-        return render_template("index.html", coins=user_data["coins"], username=user_data["username"], profile_pic=user_data["profile_pic"], page="upgrade")
-    return redirect(url_for('login'))
+        return render_template("index.html", 
+                               coins=user_data["coins"], 
+                               username=user_data["username"], 
+                               profile_pic=user_data["profile_pic"], 
+                               page="upgrade")
+    return redirect(url_for('home'))
 
 @app.route('/wallet')
 def wallet():
+    """Wallet sahifasi"""
     user_data = session.get('user_data', None)
     if user_data:
-        return render_template("index.html", coins=user_data["coins"], username=user_data["username"], profile_pic=user_data["profile_pic"], page="wallet")
-    return redirect(url_for('login'))
+        return render_template("index.html", 
+                               coins=user_data["coins"], 
+                               username=user_data["username"], 
+                               profile_pic=user_data["profile_pic"], 
+                               page="wallet")
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
