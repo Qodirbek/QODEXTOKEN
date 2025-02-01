@@ -14,9 +14,12 @@ def home():
                                page="home")
     return redirect(url_for('login'))
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """Telegram orqali kirgan foydalanuvchilarni ro‘yxatdan o‘tkazish"""
+    if request.method == 'GET':
+        return render_template("login.html")  # Login sahifasi
+    
     data = request.json  # Telegramdan kelgan JSON ma'lumot
     username = data.get('username')
     profile_pic = data.get('profile_pic')
