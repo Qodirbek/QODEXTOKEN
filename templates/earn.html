@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn - QODEX Clicker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Referal tizimi -->
+    <div class="referal-section">
+        <h2>Do‘stlaringizni taklif qiling!</h2>
+        <p>Quyidagi havolani ulashing:</p>
+        <input type="text" id="referal-link" value="{{ request.host_url }}?ref={{ current_user.telegram_id }}" readonly>
+        <button onclick="copyReferal()">📋 Nusxa olish</button>
+        <button onclick="shareReferal()">📢 Ulashish</button>
+    </div>
+
+    <!-- Navigatsiya tugmalari -->
+    <div class="nav-buttons">
+        <a href="/"><img src="{{ url_for('static', filename='images/home-button.png') }}" alt="Home"></a>
+        <a href="/earn"><img src="{{ url_for('static', filename='images/earn-button.png') }}" alt="Earn"></a>
+        <a href="/upgrade"><img src="{{ url_for('static', filename='images/upgrade-button.png') }}" alt="Upgrade"></a>
+    </div>
+
+    <script>
+        function copyReferal() {
+            var copyText = document.getElementById("referal-link");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Havola nusxalandi!");
+        }
+
+        function shareReferal() {
+            var referalLink = document.getElementById("referal-link").value;
+            window.open("https://t.me/share/url?url=" + encodeURIComponent(referalLink), "_blank");
+        }
+    </script>
+
+</body>
+</html>

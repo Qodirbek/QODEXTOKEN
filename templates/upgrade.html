@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade - QODEX Clicker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="upgrade-section">
+        <h2>Kuchaytirish</h2>
+
+        <!-- Bosish kuchini oshirish -->
+        <div class="upgrade-item">
+            <img src="{{ url_for('static', filename='images/upgrade-click.png') }}" alt="Click Upgrade">
+            <button onclick="upgradeClick()">☝️ +1 bosish ({{ current_user.click_power * 100 }} tanga)</button>
+        </div>
+
+        <!-- Energiya hajmini oshirish -->
+        <div class="upgrade-item">
+            <img src="{{ url_for('static', filename='images/upgrade-energy.png') }}" alt="Energy Upgrade">
+            <button onclick="upgradeEnergy()">🔋 +500 energiya ({{ current_user.energy_max * 100 }} tanga)</button>
+        </div>
+    </div>
+
+    <!-- Navigatsiya tugmalari -->
+    <div class="nav-buttons">
+        <a href="/"><img src="{{ url_for('static', filename='images/home-button.png') }}" alt="Home"></a>
+        <a href="/earn"><img src="{{ url_for('static', filename='images/earn-button.png') }}" alt="Earn"></a>
+        <a href="/upgrade"><img src="{{ url_for('static', filename='images/upgrade-button.png') }}" alt="Upgrade"></a>
+    </div>
+
+    <script>
+        function upgradeClick() {
+            fetch('/upgrade-click', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload();
+            });
+        }
+
+        function upgradeEnergy() {
+            fetch('/upgrade-energy', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload();
+            });
+        }
+    </script>
+
+</body>
+</html>
