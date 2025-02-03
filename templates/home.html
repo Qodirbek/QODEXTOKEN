@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QODEX Clicker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Foydalanuvchi nomi -->
+    <div class="user-info">
+        <span>{{ current_user.username }}</span>
+        <a href="/wallet"><img src="{{ url_for('static', filename='images/wallet-button.png') }}" alt="Wallet"></a>
+    </div>
+
+    <!-- Yig'ilgan tanga -->
+    <div class="balance">
+        <span id="balance-count">0</span>
+        <img src="{{ url_for('static', filename='images/small-coin.png') }}" alt="Coin">
+    </div>
+
+    <!-- Energiya paneli -->
+    <div class="energy-bar">
+        <img src="{{ url_for('static', filename='images/energy-bar.png') }}" alt="Energy Bar">
+        <div class="energy-fill"></div>
+    </div>
+
+    <!-- Bosish uchun tanga -->
+    <div class="coin-container">
+        <img id="click-coin" src="{{ url_for('static', filename='images/coin.png') }}" alt="Click Coin">
+    </div>
+
+    <!-- Navigatsiya tugmalari -->
+    <div class="nav-buttons">
+        <a href="/"><img src="{{ url_for('static', filename='images/home-button.png') }}" alt="Home"></a>
+        <a href="/earn"><img src="{{ url_for('static', filename='images/earn-button.png') }}" alt="Earn"></a>
+        <a href="/upgrade"><img src="{{ url_for('static', filename='images/upgrade-button.png') }}" alt="Upgrade"></a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

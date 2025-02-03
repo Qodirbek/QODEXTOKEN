@@ -1,0 +1,82 @@
+/* Umumiy stillar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Asosiy container */
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Bosish tugmasi */
+.click-button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: gold;
+    border: 4px solid #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+/* Tugma bosilganda animatsiya */
+.click-button:active {
+    transform: scale(0.9);
+}
+
+/* Tanga miqdorini ko'rsatish */
+.balance {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Energiya paneli */
+.energy-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.energy-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #00aaff;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Tugmalar paneli */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.navbar button:hover {
+    color: gold;
+}
