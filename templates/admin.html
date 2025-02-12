@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - QODEX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Panel - Foydalanuvchilar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Telegram ID</th>
+                <th>Username</th>
+                <th>Tangalar</th>
+                <th>Hamyon</th>
+            </tr>
+        </thead>
+        <tbody id="userTable">
+            <!-- Foydalanuvchilar ma'lumotlari shu yerga qo'shiladi -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    async function loadUsers() {
+        try {
+            let response = await fetch("/admin");
+            let users = await response.json();
+            let table = document.getElementById("userTable");
+
+            table.innerHTML = ""; // Avvalgi malumotlarni tozalash
+
+            Object.keys(users).forEach(userId => {
+                let user = users[userId];
+                let row = `<tr>
+                    <td>${userId}</td>
+                    <td>${user.username}</td>
+                    <td>${user.coins || 0}</td>
+                    <td>${user.wallet || "Noma'lum"}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+        } catch (error) {
+            console.error("Foydalanuvchilarni yuklashda xatolik:", error);
+        }
+    }
+
+    loadUsers();
+</script>
+
+</body>
+</html>

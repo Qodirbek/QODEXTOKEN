@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QODEX O'yini</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <!-- Yuqori qism: Faqat Tangalar -->
+    <header>
+        <div class="stats">
+            <div class="stat">
+                <img src="{{ url_for('static', filename='images/coin.png') }}" alt="Tanga">
+                <span id="coins">0</span>
+            </div>
+        </div>
+        <button id="wallet-button" onclick="window.location.href='{{ url_for('wallet') }}'">
+            <img src="{{ url_for('static', filename='images/wallet.png') }}" alt="Wallet">
+        </button>
+    </header>
+
+    <!-- Asosiy o‘yin qismi -->
+    <main id="home" class="page">
+        <h1>QODEX O'yiniga Xush Kelibsiz!</h1>
+        <p id="message">Tuxumni bosib QODEX tanga ishlang!</p>
+
+        <div class="egg-container">
+            <img id="egg" class="egg" src="{{ url_for('static', filename='images/egg.png') }}" alt="Tuxum" onclick="clickEgg()">
+        </div>
+
+        <!-- Energiyani ko‘rsatish -->
+        <div class="energy-container">
+            <span id="energy-text">⚡ <span id="energy">1000</span></span>
+            <div class="energy-bar">
+                <div id="energy-fill"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navigatsiya -->
+    <footer>
+        <button onclick="window.location.href='{{ url_for('index') }}'">
+            <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home"> Home
+        </button>
+        <button onclick="window.location.href='{{ url_for('earn') }}'">
+            <img src="{{ url_for('static', filename='images/earn.png') }}" alt="Earn"> Earn
+        </button>
+        <button onclick="window.location.href='{{ url_for('upgrade') }}'">
+            <img src="{{ url_for('static', filename='images/upgrade.png') }}" alt="Upgrade"> Upgrade
+        </button>
+    </footer>
+</body>
+</html>

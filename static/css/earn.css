@@ -1,0 +1,95 @@
+/* Earn sahifasi uchun maxsus stil */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Sarlavha */
+header {
+    background-color: #ffcc00;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Asosiy qism */
+main {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ro‘yxat */
+ul {
+    text-align: left;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Referal va reklama tugmalari */
+input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Navigatsiya tugmalari */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ffcc00;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer button img {
+    width: 30px;
+    height: 30px;
+}
+
+footer button:hover {
+    color: #555;
+}

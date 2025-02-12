@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn QODEX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/earn.css') }}">
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+
+    <!-- Yuqori qism: Sarlavha -->
+    <header>
+        <h1>Earn QODEX</h1>
+    </header>
+
+    <!-- Asosiy qism: Tanga ishlash usullari -->
+    <main>
+        <h2>Qanday qilib ko'proq tanga ishlash mumkin?</h2>
+        <ul>
+            <li>Referal link orqali do‘stlaringizni taklif qiling.</li>
+            <li>Har bir taklif qilingan foydalanuvchi uchun 35,000 tanga oling.</li>
+            <li>Reklama ko‘rib qo‘shimcha tanga oling.</li>
+        </ul>
+
+        <!-- Referal link yaratish -->
+        <h3>Sizning referal linkingiz:</h3>
+        <input type="text" id="referral-link" readonly>
+        <button onclick="copyReferral()">Nusxalash</button>
+
+        <!-- Reklama orqali tanga ishlash -->
+        <h3>Reklama ko‘rib tanga ishlang:</h3>
+        <button onclick="watchAd()">Reklamani ko‘rish</button>
+    </main>
+
+    <!-- Navigatsiya -->
+    <footer>
+        <button onclick="window.location.href='{{ url_for('index') }}'">
+            <img src="{{ url_for('static', filename='images/home-button.png') }}" alt="Home"> Home
+        </button>
+        <button onclick="window.location.href='{{ url_for('earn') }}'">
+            <img src="{{ url_for('static', filename='images/earn-button.png') }}" alt="Earn"> Earn
+        </button>
+        <button onclick="window.location.href='{{ url_for('upgrade') }}'">
+            <img src="{{ url_for('static', filename='images/upgrade-button.png') }}" alt="Upgrade"> Upgrade
+        </button>
+        <button onclick="window.location.href='{{ url_for('wallet') }}'">
+            <img src="{{ url_for('static', filename='images/wallet-button.png') }}" alt="Wallet"> Wallet
+        </button>
+    </footer>
+
+    <!-- Skript: Referal link va reklama -->
+    <script>
+        // Telegram foydalanuvchi ID sini olish
+        function getTelegramUserId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("tg_id") || "000000";  // Agar tg_id yo'q bo'lsa, 000000 qo‘yiladi
+        }
+
+        // Referal linkni yaratish
+        function setReferralLink() {
+            let userId = getTelegramUserId();
+            let referralLink = `https://t.me/QodexBot?start=${userId}`;
+            document.getElementById("referral-link").value = referralLink;
+        }
+
+        // Referal linkni nusxalash
+        function copyReferral() {
+            let copyText = document.getElementById("referral-link");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Referal link nusxalandi!");
+        }
+
+        // Reklama funksiyasi
+        function watchAd() {
+            alert("Reklama ko‘rish funksiyasi keyin qo‘shiladi.");
+        }
+
+        // Sahifa yuklanganda referal linkni o‘rnatish
+        window.onload = setReferralLink;
+    </script>
+
+</body>
+</html>
