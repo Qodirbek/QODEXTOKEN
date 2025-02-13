@@ -48,27 +48,29 @@ def wallet():
     user_id = request.args.get("user_id")
     return render_template("wallet.html", user_id=user_id)
 
-# 📌 Foydalanuvchini bot orqali ro‘yxatdan o‘tkazish
+# 📌 Telegram botdan kelgan foydalanuvchilarni ro‘yxatdan o‘tkazish
 @app.route("/api/register", methods=["POST"])
 def register():
     data = request.json
     user_id = str(data.get("id"))
     username = data.get("username", "NoName")
-    first_name = data.get("first_name", "User")
-
-    if not user_id:
-        return jsonify({"error": "Foydalanuvchi ID talab qilinadi"}), 400
+    wallet = data.get("wallet", "")
+    
+    if not user_id or not username:
+        return jsonify({"error": "Foydalanuvchi ID va username talab qilinadi"}), 400
 
     users = load_users()
 
-    # Agar foydalanuvchi bazada bo‘lmasa, qo‘shamiz
     if user_id not in users:
         users[user_id] = {
             "username": username,
-            "first_name": first_name,
+            "wallet": wallet,
             "coins": 0,
             "energy": 1000
         }
+    else:
+        users[user_id]["username"] = username
+        users[user_id]["wallet"] = wallet
 
     save_users(users)
     return jsonify({"message": "Foydalanuvchi ro‘yxatdan o‘tkazildi", "user": users[user_id]}), 200
@@ -110,8 +112,8 @@ def click_egg(user_id):
 def admin():
     users = load_users()
     return render_template("admin.html", users=users)
-    
-    # 📌 Admin uchun foydalanuvchilar ro'yxatini JSON shaklida qaytarish
+
+# 📌 Admin uchun foydalanuvchilar ro'yxatini JSON shaklida qaytarish
 @app.route("/api/users")
 def get_users():
     users = load_users()
