@@ -6,6 +6,7 @@
     <title>QODEX O'yini</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!-- Telegram Web App SDK -->
 </head>
 <body>
 
@@ -22,7 +23,7 @@
                 <span id="coins">0</span>
             </div>
         </div>
-        <button id="wallet-button" onclick="window.location.href='{{ url_for('wallet') }}'">
+        <button id="wallet-button">
             <img src="{{ url_for('static', filename='images/wallet.png') }}" alt="Wallet">
         </button>
     </header>
@@ -60,12 +61,25 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const userId = urlParams.get("user_id");
+            // Telegram Web App
+            const tg = window.Telegram.WebApp;
+            tg.expand(); // Butun ekran holatida ochish
 
-            if (!userId) {
-                document.getElementById("warning").style.display = "block";
+            const initData = tg.initData;
+            if (!initData) {
+                alert("Bot orqali kirishingiz kerak!");
+                return;
             }
+
+            // Foydalanuvchi ma’lumotlarini olish
+            const userData = tg.initDataUnsafe.user;
+            if (!userData || !userData.id) {
+                alert("Foydalanuvchi aniqlanmadi!");
+                return;
+            }
+
+            const userId = userData.id;
+            console.log("Foydalanuvchi ID:", userId);
 
             try {
                 const response = await fetch(`/api/get_user/${userId}`);
@@ -81,21 +95,20 @@
                 console.error("Xatolik:", error);
             }
 
-            // ✅ LOADING TUGADI: Loading GIF ni yo‘qotamiz
+            // LOADING TUGADI
             document.getElementById("loading").style.display = "none";
-
-            // ✅ Sayt elementlarini chiqaramiz
             document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
         });
 
         document.getElementById("egg").addEventListener("click", async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const userId = urlParams.get("user_id");
-
-            if (!userId) {
+            const tg = window.Telegram.WebApp;
+            const userData = tg.initDataUnsafe.user;
+            if (!userData || !userData.id) {
                 alert("Iltimos, bot orqali kiring!");
                 return;
             }
+
+            const userId = userData.id;
 
             try {
                 const response = await fetch(`/api/click_egg/${userId}`);
