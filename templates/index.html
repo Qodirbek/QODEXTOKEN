@@ -8,7 +8,7 @@
     <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
-    <!-- Yuqori qism: Faqat Tangalar -->
+    <!-- Yuqori qism: Foydalanuvchi ma’lumotlari -->
     <header>
         <div class="stats">
             <div class="stat">
@@ -51,5 +51,47 @@
             <img src="{{ url_for('static', filename='images/upgrade.png') }}" alt="Upgrade"> Upgrade
         </button>
     </footer>
+
+    <script>
+        // 📌 Foydalanuvchini bot orqali aniqlash
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get("tg_id");
+
+        if (!userId) {
+            alert("Iltimos, bot orqali kiring!");
+        } else {
+            fetch(`/api/get_user/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Foydalanuvchi topilmadi!");
+                    } else {
+                        document.getElementById("coins").innerText = data.coins || 0;
+                        document.getElementById("energy").innerText = data.energy || 1000;
+                    }
+                })
+                .catch(error => console.error("Xatolik:", error));
+        }
+
+        // 📌 Tuxumni bosish funksiyasi (Tangani oshirish)
+        function clickEgg() {
+            if (!userId) {
+                alert("Iltimos, bot orqali kiring!");
+                return;
+            }
+
+            fetch(`/api/click_egg/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById("coins").innerText = data.coins;
+                        document.getElementById("energy").innerText = data.energy;
+                    } else {
+                        alert("Energiyangiz yetarli emas!");
+                    }
+                })
+                .catch(error => console.error("Xatolik:", error));
+        }
+    </script>
 </body>
 </html>
