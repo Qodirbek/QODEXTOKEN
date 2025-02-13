@@ -10,10 +10,10 @@ users_db = "users.json"
 # 📌 Foydalanuvchilarni yuklash
 def load_users():
     if not os.path.exists(users_db):
-        return {}  # Agar fayl yo‘q bo‘lsa, bo‘sh dict qaytariladi
+        return {}
     try:
         with open(users_db, "r", encoding="utf-8") as f:
-            return json.load(f) or {}  # JSON bo‘sh bo‘lsa, dict qaytariladi
+            return json.load(f) or {}
     except json.JSONDecodeError:
         return {}
 
@@ -22,73 +22,100 @@ def save_users(data):
     with open(users_db, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-# 📌 Asosiy sahifa
+# 📌 Asosiy sahifa (foydalanuvchi ID bilan kirishi kerak)
 @app.route("/")
 def index():
+    user_id = request.args.get("user_id")  # Telegram botdan ID olish
+    if not user_id:
+        return "<h3>Iltimos, Telegram bot orqali kiring.</h3>"
     return render_template("index.html")
 
-# 📌 Earn sahifasi (Telegram ID qo‘shildi)
+# 📌 Earn sahifasi
 @app.route("/earn")
 def earn():
-    tg_id = request.args.get("tg_id", "123456")  # Agar ID bo‘lmasa, default 123456
-    return render_template("earn.html", tg_id=tg_id)
+    user_id = request.args.get("user_id")
+    return render_template("earn.html", user_id=user_id)
 
 # 📌 Upgrade sahifasi
 @app.route("/upgrade")
 def upgrade():
-    return render_template("upgrade.html")
+    user_id = request.args.get("user_id")
+    return render_template("upgrade.html", user_id=user_id)
 
 # 📌 Wallet sahifasi
 @app.route("/wallet")
 def wallet():
-    return render_template("wallet.html")
+    user_id = request.args.get("user_id")
+    return render_template("wallet.html", user_id=user_id)
 
-# 📌 Foydalanuvchini ro‘yxatdan o‘tkazish
+# 📌 Foydalanuvchini bot orqali ro‘yxatdan o‘tkazish
 @app.route("/api/register", methods=["POST"])
 def register():
     data = request.json
     user_id = str(data.get("id"))
-    username = data.get("username")
-    wallet = data.get("wallet", "")
+    username = data.get("username", "NoName")
+    first_name = data.get("first_name", "User")
 
-    if not user_id or not username:
-        return jsonify({"error": "Foydalanuvchi ID va username talab qilinadi"}), 400
+    if not user_id:
+        return jsonify({"error": "Foydalanuvchi ID talab qilinadi"}), 400
 
     users = load_users()
 
-    # Agar foydalanuvchi bazada bo‘lmasa, yangi qo‘shiladi
+    # Agar foydalanuvchi bazada bo‘lmasa, qo‘shamiz
     if user_id not in users:
-        users[user_id] = {"username": username, "wallet": wallet, "coins": 0}
-    else:
-        # Agar foydalanuvchi bazada bo‘lsa, ma’lumotlar yangilanadi
-        users[user_id]["username"] = username
-        users[user_id]["wallet"] = wallet
+        users[user_id] = {
+            "username": username,
+            "first_name": first_name,
+            "coins": 0,
+            "energy": 1000
+        }
 
     save_users(users)
     return jsonify({"message": "Foydalanuvchi ro‘yxatdan o‘tkazildi", "user": users[user_id]}), 200
 
-# 📌 Foydalanuvchini saqlash (yangi endpoint)
-@app.route("/api/save_user", methods=["POST"])
-def save_user():
-    data = request.json
-    user_id = str(data.get("user_id"))
-    first_name = data.get("first_name")
-    username = data.get("username")
-
-    if not user_id or not first_name or not username:
-        return jsonify({"error": "Barcha maydonlar talab qilinadi"}), 400
-
+# 📌 Foydalanuvchining ma’lumotlarini olish
+@app.route("/api/get_user/<user_id>", methods=["GET"])
+def get_user(user_id):
     users = load_users()
-    users[user_id] = {"first_name": first_name, "username": username, "coins": 0}
+    user = users.get(user_id)
+
+    if not user:
+        return jsonify({"error": "Foydalanuvchi topilmadi"}), 404
+
+    return jsonify(user)
+
+# 📌 Tuxum bosganda tanga qo‘shish
+@app.route("/api/click_egg/<user_id>", methods=["GET"])
+def click_egg(user_id):
+    users = load_users()
+
+    if user_id not in users:
+        return jsonify({"error": "Foydalanuvchi topilmadi"}), 404
+
+    user = users[user_id]
+
+    # Agar energiya 0 bo‘lsa, tanga ishlab bo‘lmaydi
+    if user["energy"] <= 0:
+        return jsonify({"error": "Energiyangiz tugagan!"}), 400
+
+    # 1 ta tanga qo‘shiladi, 1 ta energiya kamayadi
+    user["coins"] += 1
+    user["energy"] -= 1
 
     save_users(users)
-    return jsonify({"message": "Foydalanuvchi saqlandi", "user": users[user_id]}), 200
+    return jsonify({"success": True, "coins": user["coins"], "energy": user["energy"]})
 
-# 📌 Admin panel sahifasi
+# 📌 Admin sahifasi (foydalanuvchilar ro‘yxati)
 @app.route("/admin")
 def admin():
     users = load_users()
     return render_template("admin.html", users=users)
+    
+    # 📌 Admin uchun foydalanuvchilar ro'yxatini JSON shaklida qaytarish
+@app.route("/api/users")
+def get_users():
+    users = load_users()
+    return jsonify(users)
 
 # 📌 Flask serverni ishga tushirish
 if __name__ == "__main__":
