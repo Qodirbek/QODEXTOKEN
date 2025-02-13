@@ -67,16 +67,22 @@ def register():
     save_users(users)
     return jsonify({"message": "Foydalanuvchi ro‘yxatdan o‘tkazildi", "user": users[user_id]}), 200
 
-# 📌 Foydalanuvchi ma'lumotlarini olish
-@app.route("/api/get_user/<user_id>", methods=["GET"])
-def get_user(user_id):
-    users = load_users()
-    user = users.get(user_id)
+# 📌 Foydalanuvchini saqlash (yangi endpoint)
+@app.route("/api/save_user", methods=["POST"])
+def save_user():
+    data = request.json
+    user_id = str(data.get("user_id"))
+    first_name = data.get("first_name")
+    username = data.get("username")
 
-    if user:
-        return jsonify(user), 200
-    else:
-        return jsonify({"error": "Foydalanuvchi topilmadi"}), 404
+    if not user_id or not first_name or not username:
+        return jsonify({"error": "Barcha maydonlar talab qilinadi"}), 400
+
+    users = load_users()
+    users[user_id] = {"first_name": first_name, "username": username, "coins": 0}
+
+    save_users(users)
+    return jsonify({"message": "Foydalanuvchi saqlandi", "user": users[user_id]}), 200
 
 # 📌 Admin panel sahifasi
 @app.route("/admin")
