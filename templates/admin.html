@@ -62,7 +62,7 @@
 <script>
     async function loadUsers() {
         try {
-            let response = await fetch("/admin");
+            let response = await fetch("/api/users");
             let users = await response.json();
             let table = document.getElementById("userTable");
 
@@ -83,7 +83,7 @@
         }
     }
 
-    loadUsers();
+    document.addEventListener("DOMContentLoaded", loadUsers);
 </script>
 
 </body>
