@@ -39,6 +39,11 @@
         </div>
     </main>
 
+    <!-- Telegram orqali kirgan-yo‘qligini tekshirish -->
+    <div id="warning" style="display: none; color: red; text-align: center;">
+        ⚠️ Iltimos, bot orqali kiring!
+    </div>
+
     <!-- Navigatsiya -->
     <footer>
         <button onclick="window.location.href='{{ url_for('index') }}'">
@@ -55,10 +60,10 @@
     <script>
         // 📌 Foydalanuvchini bot orqali aniqlash
         const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get("tg_id");
+        const userId = urlParams.get("user_id"); // 🛠 user_id to‘g‘ri olinyapti
 
         if (!userId) {
-            alert("Iltimos, bot orqali kiring!");
+            document.getElementById("warning").style.display = "block"; // ❌ Xato xabar chiqarish
         } else {
             fetch(`/api/get_user/${userId}`)
                 .then(response => response.json())
